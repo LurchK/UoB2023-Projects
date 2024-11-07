@@ -1,0 +1,9 @@
+I have simply changed the structure to be a single linked list with the elements being stored in order, 
+and with a pointer which points to the last element.
+
+Comparing to the original BSA approach, it consumes far less memory when there are elements which locates at large indices.
+The maximum index is now bounded by the size of integer, less dependent on the amount of memory available.
+For example, when tested with valgrind --tool=massif, with a single [2^29]=1 element, it's been reported that,
+the basic version uses about 5GB of memory, while the extension version uses only 64 B of memory.
+It also makes time complexity for finding the maximum index to be O(1).
+However, the speed to set, get and delete a value is slower, with a time complexity to be O(N).
