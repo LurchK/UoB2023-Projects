@@ -1,0 +1,31 @@
+The original way of solving the n-queens problem has the following disadvantages:
+
+1. The use of fixed sized list makes it memory wise inefficient, 
+   the existence of buffer also limits the maximum size of board to be solved.
+2. Brute forcing the whole grid from a blank grid and using a breath-first search makes it time-wise inefficient.
+3. Summary as numbers is less intuitive for the display of data.
+
+
+My extension tries to fix these problems by implementing the following things:
+
+1. Find the solutions with a depth-first approach:
+  A. Begin with all digits of summary being 1.
+  B. Focus on the position of the queen at the front, so index=0.
+  C. Enter a while loop for index is positive.
+  D. a. If this digit or this queen's position is safe by considering all if any queens before it, 
+        but it isn't the last digit of summary, go and focus on the next digit behind, so index++.
+
+     b. If this digit or this queen's position is safe by considering all if any queens before it, 
+        and if this is also the last digit so index==(size-1), then it is a solution, do what needs to be done
+        with the solution and try the next position next time for this queen by incrementing this digit now 
+        as if the summary is a <size>-based number, with the index=0 being the MSB.
+
+     c. If this digit or this queen's position is not safe by considering all if any queens before it,
+        try the next position next time by incrementing this digit now as if the summary is a <size>-based number, 
+        with the index=0 being the MSB.
+
+  E. Check all positions until digit incrementation results in an overflow and returns index to be -1.
+
+  This algorithm prevents the need of buffer as well as the need to check if a new configuration is unique.
+
+2. Print solution boards as well as the summaries if -verbose flag is used.
