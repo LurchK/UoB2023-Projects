@@ -8,19 +8,19 @@ Another data structure, the Hashed Array Tree (HAT), has similar goals but is ve
 
 The BSA structure consists of a (fixed-size) row pointer table, each cell of which enables access to a 1D row of data. These rows are of a known size, each of which is increasingly large as we go down the table, as shown in Figure 1.
 
-![alt text](/ADTs%20Binary%20Sparse%20Arrays/Images/bsa1.png)
+<img src="Images/bsa1.png" height="300" />
 
 **Figure 1**: The Binary Sparse Array. A (vertical fixed-size) table allows access to each row. The rows are size `1` for the first, size `2` for the second, size `4` for the third, i.e., for row `k`, its size is `2^k`.
 
 However, the space allocation for each row is only done as-and-when required. After creating an empty BSA, and inserting values into index `2` and `12`, then only rows one and three will have been allocated, as shown in Figure 2.
 
-![alt text](/ADTs%20Binary%20Sparse%20Arrays/Images/bsa2.png)
+<img src="Images/bsa2.png" height="300" />
 
 **Figure 2**: A Binary Sparse Array, showing values inserted into index `2` and `12` (shaded cells). Other rows are currently unallocated.
 
 If the only element in a row is deleted, then the entire row is freed up, as shown in Figure 3 where the last element in row three is removed (index `12`).
 
-![alt text](/ADTs%20Binary%20Sparse%20Arrays/Images/bsa3.png)
+<img src="Images/bsa3.png" height="300" />
 
 **Figure 3**: Deletion in a BSA can result in entire rows being freed up.
 
